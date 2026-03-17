@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rishabdev Tripathi | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+        
+        :root {
+            --primary: #6366f1;
+        }
+        
+        .tail-container {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .hero-bg {
+            background: linear-gradient(135deg, #0f172a 0%, #1e2937 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: radial-gradient(circle at 30% 20%, rgba(99, 102, 241, 0.3) 0%, transparent 50%);
+            animation: pulse 8s ease infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.1); }
+        }
+        
+        .glass {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(16px);
+        }
+        
+        .neon-text {
+            text-shadow: 0 0 20px rgb(99 102 241),
+                        0 0 40px rgb(99 102 241);
+        }
+        
+        .project-card {
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .project-card:hover {
+            transform: translateY(-12px) rotate(2deg);
+            box-shadow: 0 25px 50px -12px rgb(99 102 241 / 0.4);
+        }
+        
+        .cert-card {
+            transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        .cert-card:hover {
+            transform: scale(1.08) rotate(1deg);
+        }
+        
+        .modal {
+            animation: modalPop 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        
+        @keyframes modalPop {
+            0% { transform: scale(0.7) translateY(50px); opacity: 0; }
+            100% { transform: scale(1) translateY(0); opacity: 1; }
+        }
+        
+        .typing {
+            overflow: hidden;
+            border-right: 3px solid #6366f1;
+            white-space: nowrap;
+            animation: typing 3.5s steps(30, end) forwards,
+                       blink 0.8s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+        
+        @keyframes blink {
+            50% { border-color: transparent }
+        }
+    </style>
+</head>
+<body class="tail-container bg-slate-950 text-white overflow-x-hidden">
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 left-0 right-0 z-50 glass border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-indigo-600 rounded-2xl flex items-center justify-center text-2xl font-bold shadow-lg shadow-indigo-500/50">RT</div>
+                <span class="text-2xl font-bold tracking-tighter text-white">Rishabdev</span>
+            </div>
+            
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#about" onclick="smoothScrollTo('about')" class="hover:text-indigo-400 transition-colors">About</a>
+                <a href="#skills" onclick="smoothScrollTo('skills')" class="hover:text-indigo-400 transition-colors">Skills</a>
+                <a href="#projects" onclick="smoothScrollTo('projects')" class="hover:text-indigo-400 transition-colors">Projects</a>
+                <a href="#certificates" onclick="smoothScrollTo('certificates')" class="hover:text-indigo-400 transition-colors">Certificates</a>
+                <a href="#contact" onclick="smoothScrollTo('contact')" class="hover:text-indigo-400 transition-colors">Contact</a>
+            </div>
+            
+            <a href="https://github.com/RishabhRD32" target="_blank"
+               class="flex items-center gap-2 bg-white/10 hover:bg-white/20 px-5 py-2.5 rounded-2xl text-sm font-semibold transition-all active:scale-95">
+                <i class="fab fa-github text-lg"></i>
+                <span>GitHub</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="hero" class="hero-bg min-h-screen flex items-center pt-20">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
+            <div data-aos="fade-right" class="space-y-8">
+                <div class="inline-flex items-center gap-3 bg-white/10 px-6 py-3 rounded-3xl text-sm backdrop-blur-md">
+                    <div class="w-3 h-3 bg-emerald-400 rounded-full animate-pulse"></div>
+                    <span class="font-medium">Available for collaboration</span>
+                </div>
+                
+                <h1 class="text-7xl md:text-8xl font-bold tracking-tighter leading-none">
+                    RISHABDEV<br>TRIPATHI
+                </h1>
+                
+                               
+                <p class="max-w-md text-lg text-slate-400" id="bio-text">
+                    Loading bio from GitHub...
+                </p>
+                
+                <div class="flex gap-4">
+                    <a href="#projects" onclick="smoothScrollTo('projects')"
+                       class="px-10 py-6 bg-indigo-600 hover:bg-indigo-500 rounded-3xl font-semibold text-lg flex items-center gap-3 transition-all shadow-2xl shadow-indigo-500/50">
+                        <i class="fas fa-rocket"></i>
+                        Explore Projects
+                    </a>
+                    <a href="https://www.linkedin.com/in/rishabdev-tripathi-149108352" target="_blank"
+                       class="px-8 py-6 border border-white/30 hover:border-indigo-400 rounded-3xl font-semibold flex items-center gap-3 transition-all">
+                        <i class="fab fa-linkedin text-2xl"></i>
+                        LinkedIn
+                    </a>
+                </div>
+                
+                <div class="flex items-center gap-8 pt-8">
+                    <div>
+                        <div class="text-xs text-slate-400">LOCATION</div>
+                        <div class="font-semibold" id="location-text">Navi Mumbai</div>
+                    </div>
+                    <div class="h-8 border-r border-white/20"></div>
+                    <div>
+                        <div class="text-xs text-slate-400">GITHUB</div>
+                        <a href="https://github.com/RishabhRD32" target="_blank" class="font-semibold hover:text-indigo-400">RishabhRD32</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- AVATAR -->
+            <div data-aos="fade-left" class="flex justify-center">
+                <div class="relative">
+                    <div class="w-96 h-96 bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 rounded-[4rem] rotate-6 shadow-2xl"></div>
+                    <img id="avatar" 
+                         class="absolute top-6 left-6 w-96 h-96 object-cover rounded-[3rem] border-8 border-slate-950 shadow-2xl"
+                         src="https://avatars.githubusercontent.com/u/12345678" alt="Rishabdev Tripathi">
+                    <div class="absolute -bottom-4 -right-4 bg-emerald-500 text-white text-xs font-bold px-6 py-2 rounded-3xl flex items-center gap-2 shadow-xl">
+                        <i class="fas fa-circle text-xs animate-pulse"></i>
+                        OPEN TO WORK
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- SCROLL INDICATOR -->
+        <div class="absolute bottom-12 left-1/2 flex flex-col items-center gap-2 text-xs tracking-widest">
+            <div class="animate-bounce">SCROLL TO EXPLORE</div>
+            <i class="fas fa-chevron-down text-2xl"></i>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="py-28 bg-slate-900">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <div class="inline px-6 py-2 bg-white/5 rounded-3xl text-indigo-400 text-sm font-medium">MY STORY</div>
+                <h2 class="text-5xl font-bold mt-4">About Me</h2>
+            </div>
+            
+            <div class="grid md:grid-cols-12 gap-12 items-center">
+                <div data-aos="fade-up" class="md:col-span-5">
+                    <div class="glass p-10 rounded-3xl border border-white/10">
+                        <p id="full-bio" class="text-lg leading-relaxed text-slate-300">
+                            Loading detailed bio...
+                        </p>
+                        
+                        <div class="mt-8 flex gap-6 text-sm">
+                            <div class="flex items-center gap-3">
+                                <i class="fas fa-graduation-cap text-2xl text-indigo-400"></i>
+                                <div>
+                                    <div class="font-medium">Computer Science &amp; Electronics</div>
+                                    <div class="text-xs text-slate-400">Student</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div data-aos="fade-up" data-aos-delay="200" class="md:col-span-7 space-y-8">
+                    <div class="flex gap-6">
+                        <div class="flex-1 bg-gradient-to-br from-indigo-500/10 to-transparent p-8 rounded-3xl border border-indigo-500/20">
+                            <div class="text-5xl font-bold text-indigo-400 mb-1">10+</div>
+                            <div class="uppercase text-xs tracking-widest">Projects</div>
+                        </div>
+                        <div class="flex-1 bg-gradient-to-br from-purple-500/10 to-transparent p-8 rounded-3xl border border-purple-500/20">
+                            <div class="text-5xl font-bold text-purple-400 mb-1">5+</div>
+                            <div class="uppercase text-xs tracking-widest">Certificates</div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass p-8 rounded-3xl">
+                        <h3 class="font-semibold text-lg mb-6 flex items-center gap-3">
+                            <span class="flex-1 h-px bg-white/20"></span>
+                            PASSIONATE ABOUT
+                            <span class="flex-1 h-px bg-white/20"></span>
+                        </h3>
+                        <div class="grid grid-cols-3 gap-4 text-center text-sm">
+                            <div class="bg-white/5 rounded-2xl py-4">AI/ML</div>
+                            <div class="bg-white/5 rounded-2xl py-4">Web3</div>
+                            <div class="bg-white/5 rounded-2xl py-4">Emerging Tech</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="py-28 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <div class="inline px-6 py-2 bg-white/5 rounded-3xl text-indigo-400 text-sm font-medium">EXPERTISE</div>
+                <h2 class="text-5xl font-bold mt-4">Skills &amp; Technologies</h2>
+            </div>
+            
+            <div data-aos="fade-up" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
+                <!-- Skills populated by JS but with fallback -->
+                <div class="skill-pill bg-gradient-to-br from-blue-500/10 to-transparent border border-blue-500/30 rounded-3xl p-8 text-center hover:scale-110 transition-all">
+                    <i class="fab fa-python text-6xl mb-4 text-yellow-400"></i>
+                    <div class="font-semibold">Python</div>
+                </div>
+                <div class="skill-pill bg-gradient-to-br from-indigo-500/10 to-transparent border border-indigo-500/30 rounded-3xl p-8 text-center hover:scale-110 transition-all">
+                    <i class="fab fa-js text-6xl mb-4 text-yellow-400"></i>
+                    <div class="font-semibold">TypeScript / JS</div>
+                </div>
+                <div class="skill-pill bg-gradient-to-br from-green-500/10 to-transparent border border-green-500/30 rounded-3xl p-8 text-center hover:scale-110 transition-all">
+                    <i class="fas fa-mobile-alt text-6xl mb-4 text-green-400"></i>
+                    <div class="font-semibold">Kotlin / Android</div>
+                </div>
+                <div class="skill-pill bg-gradient-to-br from-red-500/10 to-transparent border border-red-500/30 rounded-3xl p-8 text-center hover:scale-110 transition-all">
+                    <i class="fab fa-html5 text-6xl mb-4 text-red-400"></i>
+                    <div class="font-semibold">HTML / CSS</div>
+                </div>
+                <div class="skill-pill bg-gradient-to-br from-cyan-500/10 to-transparent border border-cyan-500/30 rounded-3xl p-8 text-center hover:scale-110 transition-all">
+                    <i class="fas fa-brain text-6xl mb-4 text-cyan-400"></i>
+                    <div class="font-semibold">AI / ML</div>
+                </div>
+                <div class="skill-pill bg-gradient-to-br from-purple-500/10 to-transparent border border-purple-500/30 rounded-3xl p-8 text-center hover:scale-110 transition-all">
+                    <i class="fas fa-shield-alt text-6xl mb-4 text-purple-400"></i>
+                    <div class="font-semibold">Cyber Security</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="py-28 bg-slate-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-end mb-16">
+                <div>
+                    <div class="inline px-6 py-2 bg-white/5 rounded-3xl text-indigo-400 text-sm font-medium">FEATURED WORK</div>
+                    <h2 class="text-5xl font-bold mt-4">GitHub Projects</h2>
+                </div>
+                <a href="https://github.com/RishabhRD32?tab=repositories" target="_blank"
+                   class="text-indigo-400 hover:underline flex items-center gap-2 text-sm">
+                    VIEW ALL ON GITHUB <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            
+            <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Populated dynamically by JavaScript -->
+                <div class="col-span-full text-center py-12 text-slate-400" id="projects-loading">
+                    Fetching latest repositories from GitHub...
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CERTIFICATES -->
+    <section id="certificates" class="py-28 bg-slate-950">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <div class="inline px-6 py-2 bg-white/5 rounded-3xl text-indigo-400 text-sm font-medium">ACHIEVEMENTS</div>
+                <h2 class="text-5xl font-bold mt-4">Certificates</h2>
+                <p class="text-slate-400 mt-3 max-w-md mx-auto">Auto-fetched from <span class="font-mono text-xs bg-white/10 px-2 py-1 rounded">/uploads/Certificates</span> folder in my Portfolio repo</p>
+            </div>
+            
+            <div id="certificates-grid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                <!-- Populated dynamically -->
+                <div id="certs-loading" class="col-span-full text-center py-20 text-slate-400 flex flex-col items-center">
+                    <div class="animate-spin w-8 h-8 border-4 border-indigo-400 border-t-transparent rounded-full mb-4"></div>
+                    Loading certificates from GitHub...
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="py-28 bg-slate-900">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="glass rounded-3xl p-12">
+                <div class="text-center mb-12">
+                    <h2 class="text-5xl font-bold">Let's Connect</h2>
+                    <p class="text-slate-400 mt-3">Drop a message or connect on socials</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-12">
+                    <div>
+                        <div class="space-y-8">
+                            <a href="https://www.linkedin.com/in/rishabdev-tripathi-149108352" target="_blank"
+                               class="flex items-center gap-6 group">
+                                <div class="w-16 h-16 bg-blue-600/20 rounded-2xl flex items-center justify-center text-4xl group-hover:scale-110 transition-transform">
+                                    <i class="fab fa-linkedin"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-xl">LinkedIn</div>
+                                    <div class="text-slate-400 text-sm">rishabdev-tripathi-149108352</div>
+                                </div>
+                            </a>
+                            
+                            <a href="https://github.com/RishabhRD32" target="_blank"
+                               class="flex items-center gap-6 group">
+                                <div class="w-16 h-16 bg-gray-700/50 rounded-2xl flex items-center justify-center text-4xl group-hover:scale-110 transition-transform">
+                                    <i class="fab fa-github"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-xl">GitHub</div>
+                                    <div class="text-slate-400 text-sm">@RishabhRD32</div>
+                                </div>
+                            </a>
+                            
+                            <a href="https://g.dev/RDX32" target="_blank"
+                               class="flex items-center gap-6 group">
+                                <div class="w-16 h-16 bg-green-600/20 rounded-2xl flex items-center justify-center text-4xl group-hover:scale-110 transition-transform">
+                                    <i class="fas fa-google"></i>
+                                </div>
+                                <div>
+                                    <div class="font-semibold text-xl">Google Developer</div>
+                                    <div class="text-slate-400 text-sm">@RDX32</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- CONTACT FORM -->
+                    <div>
+                        <form id="contact-form" class="space-y-6">
+                            <input type="text" placeholder="Your Name" 
+                                   class="w-full bg-white/10 border border-white/20 focus:border-indigo-400 rounded-2xl px-6 py-5 outline-none">
+                            <input type="email" placeholder="Your Email" 
+                                   class="w-full bg-white/10 border border-white/20 focus:border-indigo-400 rounded-2xl px-6 py-5 outline-none">
+                            <textarea placeholder="Your Message" rows="5"
+                                      class="w-full bg-white/10 border border-white/20 focus:border-indigo-400 rounded-2xl px-6 py-5 outline-none resize-none"></textarea>
+                            <button type="submit"
+                                    class="w-full py-6 bg-white text-slate-950 font-bold text-lg rounded-3xl hover:bg-indigo-400 hover:text-white transition-all">
+                                SEND MESSAGE
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black py-16 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-6 text-center text-xs text-slate-500">
+            <div class="flex justify-center gap-8 mb-8">
+                <a href="https://github.com/RishabhRD32" target="_blank" class="hover:text-white transition-colors">GitHub</a>
+                <a href="https://www.linkedin.com/in/rishabdev-tripathi-149108352" target="_blank" class="hover:text-white transition-colors">LinkedIn</a>
+                <a href="https://g.dev/RDX32" target="_blank" class="hover:text-white transition-colors">Google Dev</a>
+            </div>
+            <p>© 2026 Rishabdev Tripathi • Built with ❤️ and GitHub API</p>
+            </div>
+    </footer>
+
+    <!-- CERTIFICATE MODAL -->
+    <div id="cert-modal" class="hidden fixed inset-0 bg-black/90 z-[9999] flex items-center justify-center">
+        <div class="modal glass max-w-4xl w-full mx-6 rounded-3xl overflow-hidden relative">
+            <button onclick="closeModal()" 
+                    class="absolute top-6 right-6 text-3xl text-white/70 hover:text-white z-10">✕</button>
+            <div id="modal-content" class="p-8">
+                <!-- Image or PDF loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tailwind script
+        function initTailwind() {
+            tailwind.config = {
+                content: [],
+                theme: {
+                    extend: {}
+                }
+            }
+        }
+        
+        // Smooth scroll
+        function smoothScrollTo(section) {
+            const el = document.getElementById(section);
+            if (el) {
+                el.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+        
+        // Fetch GitHub User
+        async function fetchGitHubUser() {
+            try {
+                const res = await fetch('https://api.github.com/users/RishabhRD32');
+                const data = await res.json();
+                
+                // Update avatar
+                document.getElementById('avatar').src = data.avatar_url;
+                
+                // Update bio
+                const bioEl = document.getElementById('bio-text');
+                bioEl.textContent = data.bio || "Student | Developer | Researcher";
+                
+                document.getElementById('full-bio').innerHTML = `
+                    ${data.bio || "Passionate about Emerging Technologies and AI/ML."}<br><br>
+                    Based in ${data.location || "Navi Mumbai"} • ${data.public_repos} public repositories
+                `;
+                
+                document.getElementById('location-text').textContent = data.location || "Navi Mumbai";
+                
+            } catch (e) {
+                console.log("GitHub user fetch failed (rate limit or offline)", e);
+            }
+        }
+        
+        // Fetch Repositories
+        async function fetchRepos() {
+            const container = document.getElementById('projects-grid');
+            const loading = document.getElementById('projects-loading');
+            
+            try {
+                const res = await fetch('https://api.github.com/users/RishabhRD32/repos?sort=updated&per_page=12');
+                const repos = await res.json();
+                
+                loading.remove();
+                
+                repos.forEach(repo => {
+                    const card = document.createElement('div');
+                    card.className = `project-card glass rounded-3xl p-8 border border-white/10 group cursor-pointer`;
+                    card.innerHTML = `
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <div class="font-bold text-2xl mb-1">${repo.name}</div>
+                                <div class="text-xs uppercase tracking-widest text-indigo-400">${repo.language || 'Multi-lang'}</div>
+                            </div>
+                            <div class="flex items-center gap-1 text-xs">
+                                <i class="fas fa-star"></i>
+                                <span>${repo.stargazers_count}</span>
+                            </div>
+                        </div>
+                        <p class="mt-6 line-clamp-3 text-slate-400 text-sm">${repo.description || 'No description provided.'}</p>
+                        
+                        <div class="mt-8 pt-6 border-t border-white/10 flex justify-between items-center">
+                            <a href="${repo.html_url}" target="_blank" 
+                               class="text-xs font-medium flex items-center gap-2 hover:text-indigo-400">
+                                <i class="fab fa-github"></i> VIEW REPO
+                            </a>
+                            ${repo.homepage ? `<a href="${repo.homepage}" target="_blank" class="text-emerald-400 text-xs">LIVE DEMO →</a>` : ''}
+                        </div>
+                    `;
+                    card.onclick = () => window.open(repo.html_url, '_blank');
+                    container.appendChild(card);
+                });
+                
+            } catch (e) {
+                loading.innerHTML = `<div class="text-red-400">Failed to load projects. Please check your internet.</div>`;
+            }
+        }
+        
+        // Fetch Certificates
+        async function fetchCertificates() {
+            const grid = document.getElementById('certificates-grid');
+            const loading = document.getElementById('certs-loading');
+            
+            try {
+                // IMPORTANT: User must create repo https://github.com/RishabhRD32/Portfolio
+                // and commit certificate images/PDFs to folder: uploads/Certificates
+                const res = await fetch('https://api.github.com/repos/RishabhRD32/Portfolio/contents/uploads/Certificates');
+                
+                if (!res.ok) {
+                    throw new Error("Repo or folder not found");
+                }
+                
+                const files = await res.json();
+                
+                loading.remove();
+                
+                files.forEach(file => {
+                    if (!file.name.match(/\.(png|jpg|jpeg|pdf)$/i)) return;
+                    
+                    const isPDF = file.name.toLowerCase().endsWith('.pdf');
+                    
+                    const cardHTML = `
+                        <div onclick="showCertificate('${file.download_url}', '${file.name}', ${isPDF})"
+                             class="cert-card glass rounded-3xl overflow-hidden border border-white/10 cursor-pointer group">
+                            <div class="h-64 bg-slate-950 relative">
+                                ${!isPDF ? 
+                                    `<img src="${file.download_url}" class="w-full h-full object-cover group-hover:scale-110 transition-all duration-700">` : 
+                                    `<div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-red-900/30 to-transparent">
+                                        <i class="fas fa-file-pdf text-8xl text-red-400"></i>
+                                    </div>`}
+                            </div>
+                            <div class="p-6">
+                                <div class="font-medium truncate">${file.name}</div>
+                                <div class="text-xs text-slate-400 mt-1">${isPDF ? 'PDF Certificate' : 'Image Certificate'}</div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    grid.innerHTML += cardHTML;
+                });
+                
+                if (files.length === 0) {
+                    grid.innerHTML = `<div class="col-span-full text-center py-12 text-slate-400">No certificates yet. Upload them to the repo!</div>`;
+                }
+                
+            } catch (e) {
+                loading.innerHTML = `
+                    <div class="col-span-full text-center py-12">
+                        <div class="text-amber-400 mb-4">Repository not ready</div>
+                        <div class="text-sm max-w-xs mx-auto">
+                            Create repo <span class="font-mono bg-white/10 px-2 rounded">RishabhRD32/Portfolio</span><br>
+                            and upload certificates to <span class="font-mono">uploads/Certificates</span> folder.
+                        </div>
+                    </div>`;
+            }
+        }
+        
+        // Show certificate in modal
+        let currentModalUrl = '';
+        function showCertificate(url, name, isPDF) {
+            const modal = document.getElementById('cert-modal');
+            const content = document.getElementById('modal-content');
+            
+            currentModalUrl = url;
+            
+            if (isPDF) {
+                content.innerHTML = `
+                    <div class="text-center py-8">
+                        <i class="fas fa-file-pdf text-7xl text-red-400 mb-6"></i>
+                        <div class="font-medium text-xl mb-2">${name}</div>
+                        <a href="${url}" target="_blank"
+                           class="inline-flex items-center gap-3 bg-red-600 hover:bg-red-500 px-8 py-4 rounded-2xl text-lg font-medium">
+                            <i class="fas fa-download"></i> OPEN PDF IN NEW TAB
+                        </a>
+                    </div>
+                `;
+            } else {
+                content.innerHTML = `
+                    <img src="${url}" class="w-full rounded-2xl shadow-2xl" alt="${name}">
+                    <div class="text-center mt-6 text-slate-400 text-sm">${name}</div>
+                `;
+            }
+            
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('cert-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+        
+        // Form handler (demo)
+        function handleForm() {
+            const form = document.getElementById('contact-form');
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert("✅ Message sent successfully! (Demo - in real project this would use EmailJS or Formspree)");
+                form.reset();
+            });
+        }
+        
+        // Typing effect
+        function typingEffect() {
+            const text = "Student • Developer • Researcher";
+            const el = document.getElementById('typing');
+            el.textContent = '';
+            
+            let i = 0;
+            const interval = setInterval(() => {
+                el.textContent += text[i];
+                i++;
+                if (i === text.length) clearInterval(interval);
+            }, 80);
+        }
+        
+        // Initialize everything
+        async function initializePortfolio() {
+            initTailwind();
+            AOS.init({ once: true, duration: 1000 });
+            
+            await fetchGitHubUser();
+            fetchRepos();
+            fetchCertificates();
+            typingEffect();
+            handleForm();
+            
+            // Keyboard escape for modal
+            document.addEventListener('keydown', (e) => {
+                if (e.key === "Escape") {
+                    const modal = document.getElementById('cert-modal');
+                    if (!modal.classList.contains('hidden')) closeModal();
+                }
+            });
+            
+            // Click outside modal to close
+            const modal = document.getElementById('cert-modal');
+            modal.addEventListener('click', (e) => {
+                if (e.target.id === 'cert-modal') closeModal();
+            });
+        }
+        
+        // Start the magic
+        window.onload = initializePortfolio;
+    </script>
+</body>
+</html>
